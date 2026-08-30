@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Management System</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #17202a;
+            --muted: #5f6f7c;
+            --line: #d8e1e8;
+            --paper: #ffffff;
+            --soft: #f3f7fa;
+            --accent: #0f766e;
+            --accent-dark: #115e59;
+            --code: #263238;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--ink);
+            background: var(--soft);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .wrap {
+            width: min(1100px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 28px;
+            align-items: center;
+            padding: 52px 0 42px;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            margin-bottom: 14px;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+
+        h2 {
+            margin-bottom: 16px;
+            font-size: 1.55rem;
+            letter-spacing: 0;
+        }
+
+        h3 {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            letter-spacing: 0;
+        }
+
+        .lead {
+            max-width: 680px;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 10px 16px;
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            color: var(--accent-dark);
+            background: var(--paper);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .button.primary {
+            color: #ffffff;
+            background: var(--accent);
+        }
+
+        .schema {
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #f9fcfd;
+        }
+
+        .node {
+            margin: 10px 0;
+            padding: 12px 14px;
+            border-left: 4px solid var(--accent);
+            background: var(--paper);
+            box-shadow: 0 1px 0 rgba(23, 32, 42, 0.04);
+            font-weight: 700;
+        }
+
+        main {
+            padding: 32px 0 56px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        section {
+            margin-top: 28px;
+        }
+
+        .panel {
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--paper);
+        }
+
+        ul,
+        ol {
+            margin: 0;
+            padding-left: 22px;
+        }
+
+        li + li {
+            margin-top: 8px;
+        }
+
+        code {
+            color: var(--code);
+            background: #e9eff3;
+            border-radius: 4px;
+            padding: 2px 5px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.95em;
+        }
+
+        .file-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .file-list a {
+            display: block;
+            min-height: 44px;
+            padding: 10px 12px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            color: var(--accent-dark);
+            background: #fbfdfe;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        footer {
+            padding: 24px 0;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            background: var(--paper);
+        }
+
+        @media (max-width: 760px) {
+            .hero,
+            .grid,
+            .file-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrap hero">
+            <div>
+                <h1>Student Course Management System</h1>
+                <p class="lead">
+                    A beginner-friendly MySQL 8.x project for managing departments, students,
+                    instructors, courses, enrollments, views, stored procedures, and reports.
+                </p>
+                <div class="actions">
+                    <a class="button primary" href="README.md">Read README</a>
+                    <a class="button" href="database/01_create_database.sql">Start SQL</a>
+                </div>
+            </div>
+            <div class="schema" aria-label="Database table overview">
+                <div class="node">Departments</div>
+                <div class="node">Students</div>
+                <div class="node">Instructors</div>
+                <div class="node">Courses</div>
+                <div class="node">Enrollments</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="grid" aria-label="Project summary">
+            <div class="panel">
+                <h2>What It Includes</h2>
+                <ul>
+                    <li>5 related database tables with primary keys and foreign keys.</li>
+                    <li>Sample data for departments, students, instructors, courses, and enrollments.</li>
+                    <li>Practice queries for joins, aggregates, subqueries, updates, deletes, views, procedures, and reports.</li>
+                    <li>Safe transaction examples for update and delete operations.</li>
+                </ul>
+            </div>
+
+            <div class="panel">
+                <h2>How To Run</h2>
+                <ol>
+                    <li>Open MySQL 8.x.</li>
+                    <li>Run the SQL files from <code>01_create_database.sql</code> to <code>11_reports.sql</code>.</li>
+                    <li>Test the views and stored procedure calls included in the scripts.</li>
+                    <li>Use the reports file to analyze popular courses, departments, instructors, and semesters.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>SQL Files</h2>
+            <ul class="file-list">
+                <li><a href="database/01_create_database.sql">01_create_database.sql</a></li>
+                <li><a href="database/02_create_tables.sql">02_create_tables.sql</a></li>
+                <li><a href="database/03_insert_sample_data.sql">03_insert_sample_data.sql</a></li>
+                <li><a href="database/04_basic_queries.sql">04_basic_queries.sql</a></li>
+                <li><a href="database/05_joins.sql">05_joins.sql</a></li>
+                <li><a href="database/06_aggregate_functions.sql">06_aggregate_functions.sql</a></li>
+                <li><a href="database/07_subqueries.sql">07_subqueries.sql</a></li>
+                <li><a href="database/08_updates_deletes.sql">08_updates_deletes.sql</a></li>
+                <li><a href="database/09_views.sql">09_views.sql</a></li>
+                <li><a href="database/10_stored_procedures.sql">10_stored_procedures.sql</a></li>
+                <li><a href="database/11_reports.sql">11_reports.sql</a></li>
+            </ul>
+        </section>
+
+        <section class="grid" aria-label="Database details">
+            <div class="panel">
+                <h2>Relationships</h2>
+                <ul>
+                    <li>Students belong to Departments.</li>
+                    <li>Instructors belong to Departments.</li>
+                    <li>Courses belong to Departments and Instructors.</li>
+                    <li>Enrollments connect Students and Courses.</li>
+                </ul>
+            </div>
+
+            <div class="panel">
+                <h2>Concepts Practiced</h2>
+                <ul>
+                    <li>CREATE, INSERT, SELECT, UPDATE, DELETE</li>
+                    <li>JOIN, GROUP BY, ORDER BY, aggregate functions</li>
+                    <li>Subqueries, views, stored procedures, transactions</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            Student Course Management System using MySQL 8.x.
+        </div>
+    </footer>
+</body>
+</html>
